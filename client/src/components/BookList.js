@@ -1,26 +1,19 @@
 import React from 'react';
-import { gql } from 'apollo-boost';
 import { graphql } from 'react-apollo';
 
-const getBooksQuery = gql`
-    {
-        books {
-            name
-            id
-        }
-    }
-`
+import { getBooksQuery } from '../queries/queries'
 
-function BookList({data}) {
-    function displayBooks(){
-        if(data.loading){
-            return(
+
+function BookList({ data }) {
+    function displayBooks() {
+        if (data.loading) {
+            return (
                 <div>Loading Books ...</div>
             )
         } else {
             return data.books.map(book => {
-                return(
-                <li key={book.id}>{book.name}</li>
+                return (
+                    <li key={book.id}>{book.name}</li>
                 )
             })
         }
